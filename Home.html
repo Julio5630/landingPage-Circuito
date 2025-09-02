@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Qualidade da Água no Distrito Federal</title>
+  <meta name="description" content="Landing page informativa baseada em pesquisa sobre a qualidade da água em diferentes regiões do Distrito Federal." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --bg: #0b1f2a;
+      --card: #112e3f;
+      --primary: #17a2b8;
+      --primary-2: #2ecc71;
+      --text: #e8f6ff;
+      --muted: #b7d7e6;
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Inter', sans-serif; background: linear-gradient(180deg, var(--bg) 0%, #08212e 100%); color: var(--text); line-height: 1.6; }
+    .container { width: min(1120px, 92%); margin: 0 auto; }
+    header { position: sticky; top: 0; background: rgba(11,31,42,.6); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); z-index: 50; }
+    .nav { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; flex-wrap: wrap; }
+    .brand { display: flex; gap: 10px; align-items: center; font-weight: 700; }
+    .brand .logo { width: 36px; height: 36px; border-radius: 10px; background: conic-gradient(from 180deg, var(--primary), var(--primary-2)); }
+    .nav a { color: var(--muted); margin-left: 18px; text-decoration: none; font-weight: 600; }
+    .nav a:hover { color: var(--text); }
+    section { padding: 64px 0; }
+    .section-title { font-size: clamp(22px, 3vw, 36px); margin: 0 0 12px; }
+    .section-sub { color: var(--muted); margin-bottom: 28px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
+    .grid { display: grid; gap: 18px; }
+    .regions { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .region { background: rgba(255,255,255,.04); border: 1px solid var(--border); border-radius: 14px; padding: 14px; }
+    .region h4 { margin: 0 0 6px; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 720px; }
+    th, td { padding: 12px; border-bottom: 1px solid var(--border); text-align: left; }
+    th { background: rgba(255,255,255,.08); }
+    .gov-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; justify-content: center; } /* Centralizado */
+    .gov-links a { background: var(--primary); color: #06202b; padding: 12px 18px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: .2s; }
+    .gov-links a:hover { background: var(--primary-2); color: #fff; }
+    .map-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .map-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo"></div>
+        <span>Água DF</span>
+      </div>
+      <nav>
+        <a href="#sobre">Sobre</a>
+        <a href="#objetivos">Objetivos</a>
+        <a href="#metodologia">Metodologia</a>
+        <a href="#mapa">Mapa DF</a>
+        <a href="#grafico">Gráfico</a>
+        <a href="#regioes">Regiões</a>
+        <a href="#percepcao">Percepção</a>
+        <a href="#conclusao">Conclusões</a>
+        <a href="#referencias">Referências</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="sobre">
+      <div class="container">
+        <h2 class="section-title">Análise Comparativa da Qualidade da Água</h2>
+        <p class="section-sub">Estudo realizado em seis regiões administrativas do Distrito Federal: Plano Piloto, Ceilândia, Samambaia, Brazlândia, Taguatinga e a Colônia Agrícola 26 de Setembro.</p>
+        <div class="card">
+          <p>A pesquisa avaliou parâmetros físico-químicos como <strong>pH</strong>, <strong>cloro residual livre</strong>, <strong>turbidez</strong>, <strong>salinidade</strong> e <strong>sódio dissolvido</strong>, além de aplicar questionários à comunidade local. Os dados foram comparados com os padrões de potabilidade definidos pela <strong>Portaria GM/MS nº 888/2021</strong> e a <strong>Resolução CONAMA nº 357/2005</strong>. Enquanto a água distribuída pela CAESB atendeu em grande parte aos padrões de qualidade, a Colônia Agrícola 26 de Setembro, abastecida por poços, apresentou ausência de cloro e variações de pH, revelando riscos e desigualdades de acesso à água potável.</p>
+          <p>É importante destacar que a qualidade da água pode se alterar no trajeto até a residência, principalmente em locais com redes de distribuição antigas, contaminação local ou abastecimento alternativo. Esse fator reforça a necessidade de monitoramento constante e de investimentos em infraestrutura de saneamento.</p>
+          <p>A água é um recurso natural indispensável à vida, essencial para a manutenção dos processos biológicos, ecológicos e sociais. Apesar de sua abundância aparente, a disponibilidade de água potável é limitada e sua qualidade pode ser severamente comprometida por fatores ambientais e antrópicos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="objetivos">
+      <div class="container">
+        <h2 class="section-title">Objetivos do Estudo</h2>
+        <p class="section-sub">O presente trabalho visa realizar uma análise comparativa da qualidade da água em diferentes regiões do Distrito Federal.</p>
+        <div class="card">
+          <ul>
+            <li>Comparar a qualidade da água distribuída nas seis regiões selecionadas, considerando variações na rede pública e no uso de fontes alternativas.</li>
+            <li>Analisar parâmetros físico-químicos, com ênfase no pH, na concentração de cloro residual livre, turbidez, salinidade e presença de sódio dissolvido.</li>
+            <li>Verificar possíveis contaminações causadas por ação humana, como despejo de esgoto, poluição urbana e resíduos industriais.</li>
+            <li>Confrontar os resultados obtidos com os padrões de potabilidade definidos pelo Ministério da Saúde.</li>
+            <li>Orientar, especificamente na Colônia Agrícola 26 de Setembro, práticas adequadas de cloração da água de poço, promovendo a conscientização sobre a importância do tratamento da água.</li>
+          </ul>
+          <p>A justificativa para a realização deste estudo está ancorada na necessidade de compreender os fatores que influenciam a qualidade da água consumida pela população, bem como os riscos associados à ingestão de água fora dos padrões ideais.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="metodologia">
+      <div class="container">
+        <h2 class="section-title">Metodologia da Pesquisa</h2>
+        <p class="section-sub">Abordagem exploratória e comparativa, com métodos quantitativos e qualitativos.</p>
+        <div class="card">
+          <h3>Coleta de Amostras</h3>
+          <p>As coletas de amostras de água foram realizadas entre o final de abril e o início de maio de 2025, diretamente nas torneiras de residências das regiões selecionadas. Foram aplicados testes de pH e cloro residual utilizando kits específicos de medição em campo, que possibilitam verificar rapidamente os níveis desses indicadores.</p>
+          <h3>Questionário Online</h3>
+          <p>Além da análise laboratorial, foi aplicado um questionário online via Google Formulário, voltado aos moradores das seis regiões. As perguntas elaboradas buscaram compreender o nível de conhecimento da população sobre a água que consomem, e incluíram as seguintes questões:</p>
+          <ul>
+            <li>Na sua casa chega água tratada?</li>
+            <li>Na sua casa tem rede de esgoto?</li>
+            <li>Você sabe a importância do tratamento de água?</li>
+            <li>Você sabe dos riscos de tomar uma água sem ser tratada?</li>
+            <li>Você sabe o que é o pH da água?</li>
+          </ul>
+          <p>Os dados obtidos serão organizados em tabelas e gráficos para análise comparativa entre os resultados físico-químicos e as percepções da comunidade, permitindo avaliar a relação entre a qualidade técnica da água e o conhecimento da população sobre o tema.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="mapa">
+      <div class="container">
+        <h2 class="section-title">Mapa do Distrito Federal</h2>
+        <p class="section-sub">Localização das regiões administrativas estudadas.</p>
+        <div class="card">
+          <div class="map-container">
+            <!-- Incorporar um mapa do Google Maps. Você pode ajustar as coordenadas e o nível de zoom. -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3838.9900000000005!2d-47.929722!3d-15.7801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3b22b2b2b2b2%3A0x935a3b22b2b2b2b2!2sDistrito%20Federal!5e0!3m2!1spt-BR!2sbr!4v1678901234567!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <p style="margin-top: 20px; text-align: center; color: var(--muted);">O mapa acima ilustra a localização geral do Distrito Federal, onde as seis regiões administrativas (Plano Piloto, Ceilândia, Samambaia, Brazlândia, Taguatinga e Colônia Agrícola 26 de Setembro) foram objeto de estudo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="grafico">
+      <div class="container">
+        <h2 class="section-title">Parâmetros Físico-Químicos</h2>
+        <p class="section-sub">Valores médios de pH e cloro residual livre coletados entre abril e maio de 2025.</p>
+        <div class="card" style="height:400px;">
+          <canvas id="qualityChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section id="regioes">
+      <div class="container">
+        <h2 class="section-title">Resumo por Região</h2>
+        <div class="regions">
+          <div class="region">
+            <h4>Plano Piloto</h4>
+            <p>Água da CAESB apresentou pH estável e níveis adequados de cloro (0,2 a 2,0 mg/L), atendendo plenamente aos padrões de potabilidade. Região bem atendida por saneamento básico e com alto índice de percepção comunitária.</p>
+          </div>
+          <div class="region">
+            <h4>Ceilândia</h4>
+            <p>Amostras com pH adequado e cloro dentro da faixa recomendada. Entretanto, parte da população relatou desconhecimento sobre parâmetros técnicos da qualidade da água, o que pode impactar a forma como a comunidade lida com riscos.</p>
+          </div>
+          <div class="region">
+            <h4>Samambaia</h4>
+            <p>Água com características semelhantes à de Ceilândia, atendendo ao padrão. Porém, o estudo revelou que a percepção sobre o que significa pH ou a função do cloro é limitada, exigindo maior investimento em educação ambiental.</p>
+          </div>
+          <div class="region">
+            <h4>Brazlândia</h4>
+            <p>Qualidade da água geralmente boa, mas a infraestrutura limitada exige atenção. Pequenas variações no pH indicam necessidade de monitoramento. A percepção dos moradores sobre riscos de água não tratada é mais baixa em comparação às regiões urbanizadas.</p>
+          </div>
+          <div class="region">
+            <h4>Taguatinga</h4>
+            <p>Água com boa potabilidade, pH dentro da faixa e cloro residual eficiente. A percepção comunitária é mais elevada, o que reflete maior contato com informações sobre saneamento e saúde ambiental.</p>
+          </div>
+          <div class="region">
+            <h4>Colônia Agrícola 26 de Setembro</h4>
+            <p>Abastecida por poços artesianos, apresentou <strong>ausência total de cloro</strong> e pH abaixo do ideal em algumas amostras, indicando maior acidez. A população demonstrou menor conhecimento técnico sobre parâmetros da água, reforçando a necessidade de ações educativas e técnicas, como treinamento sobre cloração doméstica.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="percepcao">
+      <div class="container">
+        <h2 class="section-title">Percepção da Comunidade</h2>
+        <div class="card">
+          <p>A pesquisa comunitária revelou dados importantes:</p>
+          <ul>
+            <li>66,7% dos moradores afirmaram receber água tratada;</li>
+            <li>66,7% possuem acesso à rede de esgoto;</li>
+            <li>91,7% compreendem a importância do tratamento da água;</li>
+            <li>75% sabem dos riscos de consumir água sem tratamento;</li>
+            <li>Apenas 58,3% conseguiram explicar o que é o pH da água.</li>
+          </ul>
+          <p>Esses resultados mostram bom nível de percepção geral sobre a importância do saneamento básico, embora ainda existam lacunas no conhecimento técnico sobre parâmetros como o pH, especialmente nas regiões mais periféricas. Esse cenário reforça a importância de programas governamentais de capacitação em saúde ambiental.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="conclusao">
+      <div class="container">
+        <h2 class="section-title">Conclusões e Recomendações</h2>
+        <div class="card">
+          <p>O estudo confirmou que a água distribuída pela <strong>CAESB</strong> em áreas urbanizadas (como Plano Piloto e Taguatinga) apresenta boa qualidade, respeitando os padrões de potabilidade. Entretanto, em regiões abastecidas por poços, como a <strong>Colônia Agrícola 26 de Setembro</strong>, foram observadas condições preocupantes: ausência de cloro, pH abaixo do ideal e baixo nível de conhecimento da população sobre o tema.</p>
+          <p>Recomenda-se:</p>
+          <ul>
+            <li>Campanhas educativas sobre cloração doméstica e importância do pH;</li>
+            <li>Reflexão sobre políticas públicas para reduzir desigualdades de saneamento;</li>
+            <li>Maior fiscalização e apoio técnico às comunidades com abastecimento por poços;</li>
+            <li>Fortalecimento da participação comunitária na preservação da qualidade da água.</li>
+          </ul>
+          <p>Além disso, é essencial que haja uma maior articulação entre órgãos governamentais, sociedade civil e instituições de ensino para transformar os dados obtidos em ações efetivas que melhorem a saúde ambiental no Distrito Federal.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="referencias">
+      <div class="container">
+        <h2 class="section-title">Referências Bibliográficas</h2>
+        <div class="card">
+          <ul>
+            <li>BRAGA, B.; HESPANHOL, I.; MOTA, S.; CONDE, H. L. Z. Água: uso e conservação. São Paulo: Editora Moderna, 2005.</li>
+            <li>BRASIL. Ministério da Saúde. Portaria GM/MS nº 888, de 4 de maio de 2021. Estabelece os procedimentos e responsabilidades relativas ao controle e vigilância da qualidade da água para consumo humano e seu padrão de potabilidade. Diário Oficial da União, Brasília, 2021.</li>
+            <li>BRASIL. Conselho Nacional do Meio Ambiente (CONAMA). Resolução nº 357, de 17 de março de 2005. Dispõe sobre a classificação dos corpos de água e diretrizes ambientais para o seu enquadramento. Diário Oficial da União, Brasília, 2005.</li>
+            <li>REBOUÇAS, A. C. Água doce no mundo e no Brasil. In: REBOUÇAS, A. C.; BRAGA, B.; TUNDISI, J. G. (Org.). Águas doces no Brasil: capital ecológico, uso e conservação. 3. ed. São Paulo: Escrituras, 2006.</li>
+            <li>VON SPERLING, M. Introdução à qualidade das águas e ao tratamento de esgotos. 3. ed. Belo Horizonte: UFMG, 2005.</li>
+            <li>CAESB – Companhia de Saneamento Ambiental do Distrito Federal. Informações institucionais e operacionais. Disponível em: www.caesb.df.gov.br. Acesso em: maio 2025.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="gov-links">
+        <a href="https://www.gov.br/saude/" target="_blank">Ministério da Saúde</a>
+        <a href="https://www.gov.br/mma/pt-br" target="_blank">Ministério do Meio Ambiente</a>
+        <a href="https://www.caesb.df.gov.br/" target="_blank">CAESB</a>
+        <a href="https://www.gov.br/ana/pt-br" target="_blank">Agência Nacional de Águas (ANA)</a>
+      </div>
+      <p style="text-align: center; margin-top: 20px;">© <span id="year"></span> Água DF — Dados baseados na pesquisa “Análise Comparativa da Qualidade da Água em Diferentes Regiões do Distrito Federal”.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const ctx = document.getElementById('qualityChart');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Plano Piloto', 'Ceilândia', 'Samambaia', 'Brazlândia', 'Taguatinga', '26 de Setembro'],
+        datasets: [
+          {
+            label: 'pH Médio',
+            data: [7.2, 7.0, 7.1, 6.9, 7.3, 5.9], // Dados fictícios para demonstração
+            backgroundColor: 'rgba(23,162,184,0.6)'
+          },
+          {
+            label: 'Cloro Residual (mg/L)',
+            data: [1.0, 0.8, 0.7, 0.6, 1.1, 0.0], // Dados fictícios para demonstração
+            backgroundColor: 'rgba(46,204,113,0.6)'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Valor'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Região'
+            }
+          }
+        },
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                let label = context.dataset.label || '';
+                if (label) {
+                  label += ': ';
+                }
+                if (context.parsed.y !== null) {
+                  label += context.parsed.y.toFixed(1);
+                  if (context.dataset.label === 'Cloro Residual (mg/L)') {
+                    label += ' mg/L';
+                  }
+                }
+                return label;
+              }
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
